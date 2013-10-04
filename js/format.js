@@ -13,6 +13,7 @@ if (!String.prototype.format) {
             if (typeof arg != 'undefined') {
                 if (match.match(/{(\d+)}\[.*\](\(.*\))?/g)) {
                     // array formatter: {0}[...]
+                    // array formatter with delimiter: {0}[...](...)
                     var itemContents = /{\d+}\[(.*)\]/g.exec(match)[1];
                     var delimiterExec = /{\d+}\[(.*)\]\((.*)\)/g.exec(match);
                     var delimiter = (delimiterExec && delimiterExec.length == 3)?
@@ -52,7 +53,7 @@ if (!String.prototype.format) {
                     }
                     return ret;
                 } else {
-                    // numberad formatter: {0}
+                    // numbered formatter: {0}
                     return arg;
                 }
             } else {
